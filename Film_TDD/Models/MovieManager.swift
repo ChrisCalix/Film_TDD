@@ -34,4 +34,9 @@ struct MovieManager {
         moviesSeen.append(moviesToSee[index])
         moviesToSee.remove(at: index)
     }
+
+    func getCheckedMovie(at index: Int) -> Movie {
+
+        return moviesSeen[index]
+    }
 }

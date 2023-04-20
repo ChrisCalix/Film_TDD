@@ -26,13 +26,13 @@ class MovieManagerTest: XCTestCase {
     //MARK: Add & Query
     func test_add_moviesToSeeReturnsOne() {
 
-        var (sut, _) = makeSUT(title: "Sci-Fi")
+        let (sut, _) = makeSUT(title: MovieName.sciFi.rawValue)
         XCTAssertEqual(sut.moviesToSee.count, 1)
     }
 
     func test_query_returnsMovieAtIndex() {
 
-        var (sut, movie) = makeSUT(title: "Arthouse Drama")
+        let (sut, movie) = makeSUT(title: MovieName.arthouseDrama.rawValue)
         let movieQueried = sut.getMovie(at: 0)
 
         XCTAssertEqual(movie.title, movieQueried.title)
@@ -41,19 +41,44 @@ class MovieManagerTest: XCTestCase {
     //MARK: Checking Off
     func test_checkOffMovie_updatesMovieManagerCount() {
 
-        var (sut, _) = makeSUT(title: "Action/Adventure")
+        var (sut, _) = makeSUT(title: MovieName.actionAdventure.rawValue)
         sut.checkOffMovie(at: 0)
 
         XCTAssertEqual(sut.moviesToSee.count, 0)
         XCTAssertEqual(sut.moviesSeen.count, 1)
     }
 
+    func test_checkOffMoview_removesMovieFromArray() {
+        
+        var (sut, _) = makeSUT(title: MovieName.sciFi.rawValue)
+        let artHouseDrama = Movie(title: MovieName.arthouseDrama.rawValue)
+        sut.add(artHouseDrama)
+        sut.checkOffMovie(at: 0)
+
+        XCTAssertEqual(sut.getMovie(at: 0).title, artHouseDrama.title)
+    }
+
+    func test_checkOffMovie_returnMovieAtIndex() {
+
+        var (sut, movie) = makeSUT(title: MovieName.sciFi.rawValue)
+        sut.checkOffMovie(at: 0)
+        let movieQueried = sut.getCheckedMovie(at: 0)
+        XCTAssertEqual(movie.title, movieQueried.title)
+    }
+
     //MARK: Helpers
-    func makeSUT(title: String = "TestMovie") -> (sut: MovieManager, movie: Movie){
+    func makeSUT(title: String =  MovieName.test.rawValue) -> (sut: MovieManager, movie: Movie){
 
         var sut = MovieManager()
         let movie = Movie(title: title)
         sut.add(movie)
         return (sut, movie)
+    }
+
+    enum MovieName: String {
+        case sciFi = "Sci-Fi"
+        case arthouseDrama = "Arthouse Drama"
+        case actionAdventure = "Action/Adventure"
+        case test = "TestMovie"
     }
 }
