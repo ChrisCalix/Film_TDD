@@ -106,4 +106,5 @@ enum MovieName: String {
     case fairyTale = "FairyTale"
     case darkComedy = "DarkComedy"
     case thriller = "Thriller"
+    case indiComedy = "Indicomedy"
 }

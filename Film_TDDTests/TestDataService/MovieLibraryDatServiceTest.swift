@@ -94,7 +94,7 @@ class MovieLibraryDatServiceTest: XCTestCase {
         let (sut, mock) = makeMockSUT()
         let darkComedy = createMovie(title: MovieName.darkComedy.rawValue)
         sut.movieManager?.add(darkComedy)
-        
+
         sut.movieManager?.add(createMovie(title: MovieName.fairyTale.rawValue))
         sut.movieManager?.checkOffMovie(at: 0)
         mock.reloadData()
@@ -102,6 +102,25 @@ class MovieLibraryDatServiceTest: XCTestCase {
         let cell = mock.cellForRow(at: IndexPath(row: 0, section: 1)) as! MovieCellMock
 
         XCTAssertEqual(cell.movie, darkComedy)
+    }
+
+    func test_cell_shouldCheckOffSelectedMovie() {
+
+        var (sut, tableView) = makeSUT()
+        let libraryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: LibraryViewController.identifier) as! LibraryViewController
+        _ = libraryVC.view
+
+        tableView = libraryVC.libraryTableView
+        tableView.dataSource = sut
+        tableView.delegate = sut
+
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+
+        XCTAssertEqual(sut.movieManager?.moviesToSee.count, 1)
+        XCTAssertEqual(sut.movieManager?.moviesSeen.count, 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1)
+
     }
 
     // MARK: Helpers

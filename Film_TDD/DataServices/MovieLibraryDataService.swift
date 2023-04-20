@@ -45,12 +45,29 @@ extension MovieLibraryDataService: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("number of sections 2")
+
         return 2
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+        guard let librarySection = LibrarySection(rawValue: section) else { return nil }
+
+        let sectionTitle = librarySection.rawValue == 0 ? "Movies To See" : "Movies Seen"
+        print("number of sections header \(sectionTitle)")
+        return sectionTitle
     }
 
 }
 
 extension MovieLibraryDataService: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let movieManager, let libraeySEction = LibrarySection(rawValue: indexPath.section) else { return }
+
+        if libraeySEction == .moviesToSee {
+            movieManager.checkOffMovie(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
 }

@@ -22,6 +22,7 @@
 		AAD52D0E29F1A5900087FE6C /* MovieLibraryDatServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD52D0D29F1A5900087FE6C /* MovieLibraryDatServiceTest.swift */; };
 		AAD52D1029F1B28D0087FE6C /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD52D0F29F1B28D0087FE6C /* MovieCell.swift */; };
 		AAD52D1329F1D16D0087FE6C /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD52D1229F1D16D0087FE6C /* Mock.swift */; };
+		AAD52D1629F1D7840087FE6C /* MovieCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD52D1529F1D7840087FE6C /* MovieCellTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		AAD52D0D29F1A5900087FE6C /* MovieLibraryDatServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLibraryDatServiceTest.swift; sourceTree = "<group>"; };
 		AAD52D0F29F1B28D0087FE6C /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		AAD52D1229F1D16D0087FE6C /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		AAD52D1529F1D7840087FE6C /* MovieCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		AAB7E63C29F0CE2D00E00774 /* Film_TDDTests */ = {
 			isa = PBXGroup;
 			children = (
+				AAD52D1429F1D77A0087FE6C /* TestViews */,
 				AAD52D1129F1D1630087FE6C /* Mocks */,
 				AAD52D0C29F1A5740087FE6C /* TestDataService */,
 				AAB7E64B29F0D12400E00774 /* TestControllers */,
@@ -183,6 +186,14 @@
 				AAD52D1229F1D16D0087FE6C /* Mock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		AAD52D1429F1D77A0087FE6C /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				AAD52D1529F1D7840087FE6C /* MovieCellTest.swift */,
+			);
+			path = TestViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +315,7 @@
 				AAD52D1329F1D16D0087FE6C /* Mock.swift in Sources */,
 				AAB7E64E29F0D15900E00774 /* MovieManagerTest.swift in Sources */,
 				AAB7E65229F0E20700E00774 /* LibraryViewControllerTest.swift in Sources */,
+				AAD52D1629F1D7840087FE6C /* MovieCellTest.swift in Sources */,
 				AAB7E64529F0CE3900E00774 /* MovieStructTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
