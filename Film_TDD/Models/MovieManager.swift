@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieManager {
+class MovieManager {
 
     var moviesToSee: [Movie]
     var moviesSeen: [Movie]
@@ -18,9 +18,11 @@ struct MovieManager {
         self.moviesToSee = moviesToSee
     }
 
-    mutating func add(_ movie: Movie) {
+    func add(_ movie: Movie) {
 
-        moviesToSee.append(movie)
+        if !moviesToSee.contains(movie) {
+            moviesToSee.append(movie)
+        }
     }
 
     func getMovie(at index: Int) -> Movie {
@@ -28,7 +30,7 @@ struct MovieManager {
         return moviesToSee[index]
     }
 
-    mutating func checkOffMovie(at index: Int) {
+    func checkOffMovie(at index: Int) {
 
         guard index < moviesToSee.count else { return }
         moviesSeen.append(moviesToSee[index])
@@ -38,5 +40,10 @@ struct MovieManager {
     func getCheckedMovie(at index: Int) -> Movie {
 
         return moviesSeen[index]
+    }
+
+    func resetMovies() {
+        moviesSeen.removeAll()
+        moviesToSee.removeAll()
     }
 }
