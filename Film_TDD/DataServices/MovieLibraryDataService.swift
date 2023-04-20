@@ -7,16 +7,28 @@
 
 import UIKit
 
+
 class MovieLibraryDataService: NSObject {
 
     var movieManager: MovieManager?
+
+    enum LibrarySection: Int {
+        case moviesToSee, moviesSeen
+    }
 }
 
 extension MovieLibraryDataService: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        movieManager?.moviesToSee.count ?? 0
+        guard let librarySection = LibrarySection(rawValue: section) else { return 0 }
+
+        switch librarySection {
+        case .moviesToSee:
+            return movieManager?.moviesToSee.count ?? 0
+        case .moviesSeen:
+            return movieManager?.moviesSeen.count ?? 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

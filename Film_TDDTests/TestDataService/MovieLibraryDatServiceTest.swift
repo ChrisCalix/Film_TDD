@@ -24,18 +24,27 @@ class MovieLibraryDatServiceTest: XCTestCase {
         let (sut, tableView) = makeSUT()
         tableView.dataSource = sut
         tableView.delegate = sut
-        let fairyTale = createMovie(title: MovieName.fairyTale.rawValue)
-        let darkComedy = createMovie(title: MovieName.darkComedy.rawValue)
-        let thriller = createMovie(title: MovieName.thriller.rawValue)
-
-        sut.movieManager?.add(fairyTale)
-        sut.movieManager?.add(darkComedy)
 
         XCTAssertEqual(tableView.numberOfRows(inSection: 0), 2)
+
+        let thriller = createMovie(title: MovieName.thriller.rawValue)
         sut.movieManager?.add(thriller)
         tableView.reloadData()
 
         XCTAssertEqual(tableView.numberOfRows(inSection: 0), 3)
+    }
+
+    func test_tableViewSection() {
+        let (sut, tableView) = makeSUT()
+        tableView.dataSource = sut
+        tableView.delegate = sut
+        sut.movieManager?.checkOffMovie(at: 0)
+
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1)
+
+        sut.movieManager?.checkOffMovie(at: 0)
+        tableView.reloadData()
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 2)
     }
 
     // MARK: Helpers
@@ -44,6 +53,12 @@ class MovieLibraryDatServiceTest: XCTestCase {
         let sut = MovieLibraryDataService()
         sut.movieManager = MovieManager()
         let tableView = UITableView()
+
+        let fairyTale = createMovie(title: MovieName.fairyTale.rawValue)
+        let darkComedy = createMovie(title: MovieName.darkComedy.rawValue)
+
+        sut.movieManager?.add(fairyTale)
+        sut.movieManager?.add(darkComedy)
 
         return (sut, tableView)
     }
