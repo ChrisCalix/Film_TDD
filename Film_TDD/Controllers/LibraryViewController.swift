@@ -21,6 +21,5 @@ class LibraryViewController: UIViewController {
         libraryTableView.delegate = dataService
     }
 
-
 }
 

@@ -91,16 +91,19 @@ class MovieManagerTest: XCTestCase {
     //MARK: Helpers
     func makeSUT(title: String =  MovieName.test.rawValue) -> (sut: MovieManager, movie: Movie){
 
-        var sut = MovieManager()
+        let sut = MovieManager()
         let movie = Movie(title: title)
         sut.add(movie)
         return (sut, movie)
     }
+}
 
-    enum MovieName: String {
-        case sciFi = "Sci-Fi"
-        case arthouseDrama = "Arthouse Drama"
-        case actionAdventure = "Action/Adventure"
-        case test = "TestMovie"
-    }
+enum MovieName: String {
+    case sciFi = "Sci-Fi"
+    case arthouseDrama = "Arthouse Drama"
+    case actionAdventure = "Action/Adventure"
+    case test = "TestMovie"
+    case fairyTale = "FairyTale"
+    case darkComedy = "DarkComedy"
+    case thriller = "Thriller"
 }
