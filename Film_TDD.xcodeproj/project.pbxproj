@@ -20,6 +20,7 @@
 		AAB7E65229F0E20700E00774 /* LibraryViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7E65129F0E20700E00774 /* LibraryViewControllerTest.swift */; };
 		AAB7E65529F0E4BE00E00774 /* MovieLibraryDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7E65429F0E4BE00E00774 /* MovieLibraryDataService.swift */; };
 		AAD52D0E29F1A5900087FE6C /* MovieLibraryDatServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD52D0D29F1A5900087FE6C /* MovieLibraryDatServiceTest.swift */; };
+		AAD52D1029F1B28D0087FE6C /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD52D0F29F1B28D0087FE6C /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		AAB7E65129F0E20700E00774 /* LibraryViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewControllerTest.swift; sourceTree = "<group>"; };
 		AAB7E65429F0E4BE00E00774 /* MovieLibraryDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLibraryDataService.swift; sourceTree = "<group>"; };
 		AAD52D0D29F1A5900087FE6C /* MovieLibraryDatServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLibraryDatServiceTest.swift; sourceTree = "<group>"; };
+		AAD52D0F29F1B28D0087FE6C /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				AAB7E61929F0CC4500E00774 /* Main.storyboard */,
+				AAD52D0F29F1B28D0087FE6C /* MovieCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD52D1029F1B28D0087FE6C /* MovieCell.swift in Sources */,
 				AAB7E61829F0CC4500E00774 /* LibraryViewController.swift in Sources */,
 				AAB7E61429F0CC4500E00774 /* AppDelegate.swift in Sources */,
 				AAB7E65529F0E4BE00E00774 /* MovieLibraryDataService.swift in Sources */,
