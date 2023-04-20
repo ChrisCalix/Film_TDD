@@ -64,13 +64,9 @@ class MovieLibraryDatServiceTest: XCTestCase {
         XCTAssertTrue(cellQueried is MovieCell)
     }
 
-    func test_cell_showlDequeueCell() {
-        let mock = TableViewMock()
-        let sut = MovieLibraryDataService()
-        sut.movieManager = MovieManager()
+    func test_cell_shouldDequeueCell() {
 
-        mock.dataSource = sut
-        mock.register(MovieCell.self, forCellReuseIdentifier: "Cell")
+        let (sut, mock) = makeMockSUT()
 
         let thriller = createMovie(title: MovieName.thriller.rawValue)
         sut.movieManager?.add(thriller)
@@ -79,6 +75,33 @@ class MovieLibraryDatServiceTest: XCTestCase {
         _ = mock.cellForRow(at: IndexPath(row: 0, section: 0))
 
         XCTAssertTrue(mock.cellDequeuedProperly)
+    }
+
+    func test_cell_sectionOnConfigShouldSetCellData() {
+        let (sut, mock) = makeMockSUT()
+
+        let fairyTail = createMovie(title: MovieName.fairyTale.rawValue)
+        sut.movieManager?.add(fairyTail)
+        mock.reloadData()
+
+        let cell = mock.cellForRow(at: IndexPath(row: 0, section: 0)) as! MovieCellMock
+
+        XCTAssertEqual(cell.movie, fairyTail)
+    }
+
+    func test_cell_sectionTwoConfigShouldSetCellData() {
+
+        let (sut, mock) = makeMockSUT()
+        let darkComedy = createMovie(title: MovieName.darkComedy.rawValue)
+        sut.movieManager?.add(darkComedy)
+        
+        sut.movieManager?.add(createMovie(title: MovieName.fairyTale.rawValue))
+        sut.movieManager?.checkOffMovie(at: 0)
+        mock.reloadData()
+
+        let cell = mock.cellForRow(at: IndexPath(row: 0, section: 1)) as! MovieCellMock
+
+        XCTAssertEqual(cell.movie, darkComedy)
     }
 
     // MARK: Helpers
@@ -102,19 +125,12 @@ class MovieLibraryDatServiceTest: XCTestCase {
         let movie = Movie(title: title)
         return movie
     }
-}
 
-extension MovieLibraryDatServiceTest {
+    func makeMockSUT() -> (sut: MovieLibraryDataService, mockTableView: TableViewMock) {
+        let sut = MovieLibraryDataService()
+        sut.movieManager = MovieManager()
+        let tableViewMock = TableViewMock.initMock(dataSource: sut)
 
-    class TableViewMock: UITableView {
-
-        var cellDequeuedProperly = false
-
-        override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
-            self.cellDequeuedProperly = true
-
-            return super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        }
-
+        return (sut, tableViewMock)
     }
 }

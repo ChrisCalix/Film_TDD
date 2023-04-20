@@ -13,4 +13,8 @@ class MovieCell: UITableViewCell {
         super.awakeFromNib()
 
     }
+
+    func configCell(with movie: Movie) {
+        
+    }
 }

@@ -32,7 +32,15 @@ extension MovieLibraryDataService: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let movieManager = movieManager, let librarySection = LibrarySection(rawValue: indexPath.section) else { return UITableViewCell() }
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MovieCell  else { return UITableViewCell()}
+
+        let movieData = librarySection.rawValue == 0 ? movieManager.getMovie(at: indexPath.row) : movieManager.getCheckedMovie(at: indexPath.row)
+
+        cell.configCell(with: movieData)
+
         return cell
     }
 
