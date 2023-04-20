@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Library View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Film_TDD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LibraryViewController" id="BYZ-38-t0r" customClass="LibraryViewController" customModule="Film_TDD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,8 +49,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WAj-3E-nVv" secondAttribute="trailing" constant="16" id="rUH-nH-YrW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dataService" destination="aY6-lA-Oxm" id="utG-vK-IkV"/>
+                        <outlet property="libraryTableView" destination="WAj-3E-nVv" id="u62-OB-K9s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="aY6-lA-Oxm" userLabel="Movie Library Data Service" customClass="MovieLibraryDataService" customModule="Film_TDD" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="52.671755725190835" y="3.5211267605633805"/>
         </scene>
